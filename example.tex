@@ -1,0 +1,50 @@
+\documentclass{article}
+
+\usepackage{xcolor}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\usepackage{listings, listings-zig}
+\lstdefinestyle{customCodeStyle}{
+    backgroundcolor=\color{backcolour},
+    frame=single,
+    columns=spaceflexible
+}
+\lstset{
+    style=customCodeStyle,
+    numbers=left, 
+    numberstyle=\small
+}
+
+\title{Zig Lstlisting Example}
+\author{Brook Jeynes}
+
+\begin{document}
+    \maketitle
+
+    \begin{lstlisting}[language=Zig, caption=Example from https://ziglang.org/]
+const std = @import("std");
+const parseInt = std.fmt.parseInt;
+
+test "parse integers" {
+    const input = "123 67 89,99";
+    const ally = std.testing.allocator;
+
+    var list = std.ArrayList(u32).init(ally);
+    // Ensure the list is freed at scope exit.
+    // Try commenting out this line!
+    defer list.deinit();
+
+    var it = std.mem.tokenize(u8, input, " ,");
+    while (it.next()) |num| {
+        const n = try parseInt(u32, num, 10);
+        try list.append(n);
+    }
+
+    const expected = [_]u32{ 123, 67, 89, 99 };
+
+    for (expected, list.items) |exp, actual| {
+        try std.testing.expectEqual(exp, actual);
+    }
+}
+    \end{lstlisting}
+\end{document}

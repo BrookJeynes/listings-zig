@@ -1,0 +1,34 @@
+\RequirePackage{color}
+\RequirePackage{listings}
+
+\lstdefinelanguage{Zig}{%
+  sensitive%
+, morecomment=[l]{//}%
+, morecomment=[s]{/*}{*/}%
+, moredelim=[s][{\itshape\color[rgb]{0,0,0.75}}]{\#[}{]}%
+, morestring=[b]{"}%
+, alsodigit={}%
+, alsoother={}%
+, alsoletter={!}%
+%
+%
+% As per https://github.com/ziglang/zig.vim/blob/master/syntax/zig.vim
+, morekeywords={true, false} % zigBoolean
+, morekeywords={null} % zigNull
+  % zigType
+, morekeywords={bool, f16, f32, f64, f80, f128, void, type, anytype, anyerror, anyframe, volatile, linksection, noreturn, allowzero, i0, u0, isize, usize, comptime_int, comptime_float, c_char, c_short, c_ushort, c_int, c_uint, c_long, c_ulong, c_longlong, c_ulonglong, c_longdouble, anyopaque}
+, morekeywords={undefined, unreachable} % zigConstant
+, morekeywords={if, else, switch} % zigConditional
+, morekeywords={while, for} % zigRepeat
+, morekeywords={and, or, orelse} % zigComparatorWord
+, morekeywords={struct, enum, union, error, packed, opaque} % zigStructure
+, morekeywords={error} % zigException
+, morekeywords={var, const, comptime, threadlocal} % zigVarDecl
+, morekeywords={_} % zigDummyVariable
+, morekeywords={fn, try, test, pub, usingnamespace} % zigKeyword
+, morekeywords={return, break, continue} % zigExecution
+, morekeywords={defer, errdefer, async, nosuspend, await, suspend, resume, export, extern} % zigMacro
+, morekeywords={catch, inline, noinline, asm, callconv, noalias} % zigPreProc
+  % zigBuiltinFn
+, morekeywords={align, @addWithOverflow, @as, @atomicLoad, @atomicStore, @bitCast, @breakpoint, @alignCast, @alignOf, @cDefine, @cImport, @cInclude, @cUndef, @clz, @cmpxchgWeak, @cmpxchgStrong, @compileError, @compileLog, @constCast, @ctz, @popCount, @divExact, @divFloor, @divTrunc, @embedFile, @export, @extern, @tagName, @TagType, @errorName, @call, @errorReturnTrace, @fence, @fieldParentPtr, @field, @unionInit, @frameAddress, @import, @newStackCall, @asyncCall, @intToPtr, @max, @min, @memcpy, @memset, @mod, @mulAdd, @mulWithOverflow, @splat, @src, @bitOffsetOf, @byteOffsetOf, @offsetOf, @OpaqueType, @panic, @prefetch, @ptrCast, @ptrToInt, @rem, @returnAddress, @setCold, @Type, @shuffle, @reduce, @select, @setRuntimeSafety, @setEvalBranchQuota, @setFloatMode, @shlExact, @This, @hasDecl, @hasField, @shlWithOverflow, @shrExact, @sizeOf, @bitSizeOf, @sqrt, @byteSwap, @subWithOverflow, @intCast, @floatCast, @intToFloat, @floatToInt, @boolToInt, @errSetCast, @truncate, @typeInfo, @typeName, @TypeOf, @atomicRmw, @intToError, @errorToInt, @intToEnum, @enumToInt, @setAlignStack, @frame, @Frame, @frameSize, @bitReverse, @Vector, @volatileCast, @sin, @cos, @tan, @exp, @exp2, @log, @log2, @log10, @fabs, @floor, @ceil, @trunc, @wasmMemorySize, @wasmMemoryGrow, @round}
+}%
